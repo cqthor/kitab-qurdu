@@ -74,6 +74,7 @@ class Categories extends StatelessWidget {
                 width: getWidth(330, context),
                 child: ListView.builder(
                   shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
                     return InkWell(
