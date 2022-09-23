@@ -18,6 +18,15 @@ final List<String> categories = [
   'Romance'
 ];
 
+var products = [
+  {
+    'name': "Tutunamayanlar",
+    "author": "Oğuz Atay",
+    "image": "assets/images/atay.png",
+    "price": 10,
+  }
+];
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
@@ -60,8 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: getHeight(18, context)),
-            SizedBox(
-              width: getWidth(330, context),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: getWidth(20, context)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -85,26 +94,33 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: getHeight(10, context)),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: getWidth(20, context)),
+            SizedBox(
               height: getHeight(40, context),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(right: getWidth(10, context)),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: getWidth(20, context),
-                        vertical: getHeight(10, context)),
-                    decoration: BoxDecoration(
-                      color: kCategoryColor,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Center(
-                      child: Text(
-                        categories[index],
-                        style: const TextStyle(color: Colors.white),
+                  return Padding(
+                    padding: index == 0
+                        ? EdgeInsets.only(
+                            left: getWidth(20, context),
+                            right: getWidth(10, context))
+                        : index == categories.length - 1
+                            ? EdgeInsets.only(right: getWidth(20, context))
+                            : EdgeInsets.only(right: getWidth(10, context)),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getWidth(20, context),
+                          vertical: getHeight(10, context)),
+                      decoration: BoxDecoration(
+                        color: kCategoryColor,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Center(
+                        child: Text(
+                          categories[index],
+                          style: const TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   );
