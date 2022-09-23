@@ -18,7 +18,7 @@ class ProductCard extends StatelessWidget {
     return Card(
       child: SizedBox(
         height: getHeight(270, context),
-        width: getWidth(160, context),
+        width: getHeight(160, context),
         child: Stack(
           children: [
             Container(
