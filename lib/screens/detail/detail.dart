@@ -32,7 +32,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                 children: [
                   SizedBox(
                     height: getHeight(360, context),
-                    width: getWidth(350, context),
+                    // width: double.infinity,
                     child: PageView(
                       controller: _pageController,
                       children: _pages,
@@ -198,14 +198,18 @@ class MyImages extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: getHeight(350, context),
-      width: getWidth(320, context),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.fill,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: getWidth(50, context)),
+      child: Container(
+        height: getHeight(350, context),
+        // width: getHeight(320, context),
+
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(12)),
+          image: DecorationImage(
+            image: AssetImage(image),
+            fit: BoxFit.fill,
+          ),
         ),
       ),
     );
