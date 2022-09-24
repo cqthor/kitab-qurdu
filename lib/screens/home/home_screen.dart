@@ -20,11 +20,23 @@ final List<String> categories = [
 
 var products = [
   {
-    'name': "Tutunamayanlar",
+    "name": "Tutunamayanlar",
     "author": "Oğuz Atay",
     "image": "assets/images/atay.png",
-    "price": 10,
-  }
+    "price": "10",
+  },
+  {
+    "name": "Tutunamayanlar",
+    "author": "Oğuz Atay",
+    "image": "assets/images/atay.png",
+    "price": "10",
+  },
+  {
+    "name": "Tutunamayanlar",
+    "author": "Oğuz Atay",
+    "image": "assets/images/atay.png",
+    "price": "10",
+  },
 ];
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -143,31 +155,28 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: getHeight(10, context)),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: getWidth(20, context), right: getWidth(10, context)),
-              child: SingleChildScrollView(
+            SizedBox(
+              height: getHeight(270, context),
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    ProductCard(
-                        author: 'Oguz Atay',
-                        image: 'assets/images/atay.png',
-                        price: '10 AZN',
-                        title: 'Tutunamayanlar'),
-                    ProductCard(
-                        author: 'Oguz Atay',
-                        image: 'assets/images/atay.png',
-                        price: '10 AZN',
-                        title: 'Tutunamayanlar'),
-                    ProductCard(
-                        author: 'Oguz Atay',
-                        image: 'assets/images/atay.png',
-                        price: '10 AZN',
-                        title: 'Tutunamayanlar'),
-                  ],
-                ),
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: index == 0
+                        ? EdgeInsets.only(
+                            left: getWidth(20, context),
+                            right: getWidth(10, context))
+                        : index == products.length - 1
+                            ? EdgeInsets.only(right: getWidth(20, context))
+                            : EdgeInsets.only(right: getWidth(10, context)),
+                    child: ProductCard(
+                      title: products[index]['name']!,
+                      author: products[index]['author']!,
+                      image: products[index]['image']!,
+                      price: products[index]['price']!,
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(height: getHeight(20, context)),
@@ -185,31 +194,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: getWidth(20, context), right: getWidth(10, context)),
-              child: SingleChildScrollView(
+            SizedBox(
+              height: getHeight(270, context),
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    ProductCard(
-                        author: 'Oguz Atay',
-                        image: 'assets/images/atay.png',
-                        price: '10 AZN',
-                        title: 'Tutunamayanlar'),
-                    ProductCard(
-                        author: 'Oguz Atay',
-                        image: 'assets/images/atay.png',
-                        price: '10 AZN',
-                        title: 'Tutunamayanlar'),
-                    ProductCard(
-                        author: 'Oguz Atay',
-                        image: 'assets/images/atay.png',
-                        price: '10 AZN',
-                        title: 'Tutunamayanlar'),
-                  ],
-                ),
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: index == 0
+                        ? EdgeInsets.only(
+                            left: getWidth(20, context),
+                            right: getWidth(10, context))
+                        : index == products.length - 1
+                            ? EdgeInsets.only(right: getWidth(20, context))
+                            : EdgeInsets.only(right: getWidth(10, context)),
+                    child: ProductCard(
+                      title: products[index]['name']!,
+                      author: products[index]['author']!,
+                      image: products[index]['image']!,
+                      price: products[index]['price']!,
+                    ),
+                  );
+                },
               ),
             ),
           ],
